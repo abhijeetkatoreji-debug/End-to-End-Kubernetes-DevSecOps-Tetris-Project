@@ -456,3 +456,5 @@ Get the Jenkins Server's public IP and 8080 port, put the password
 
 Completed
 2. 
+
+squ_0888ab2e8896e7f0d1e00181c9010b02abd920f6
