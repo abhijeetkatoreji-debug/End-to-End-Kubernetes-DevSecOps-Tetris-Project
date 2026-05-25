@@ -6,10 +6,10 @@ terraform {
     dynamodb_table = "Lock-Files"
     encrypt        = true
   }
-  required_version = ">=0.13.0"
+  required_version = ">=0.14.0"
   required_providers {
     aws = {
-      version = ">= 2.7.0"
+      version = ">= 5.49.0"
       source  = "hashicorp/aws"
     }
   }
