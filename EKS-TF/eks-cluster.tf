@@ -6,7 +6,7 @@ resource "aws_eks_cluster" "eks-cluster" {
     security_group_ids = [data.aws_security_group.sg-default.id]
   }
 
-  version = "1.29"
+  version = "1.35"
 
   depends_on = [aws_iam_role_policy_attachment.AmazonEKSClusterPolicy]
 }
