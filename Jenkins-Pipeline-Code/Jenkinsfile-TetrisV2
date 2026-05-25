@@ -1,7 +1,6 @@
 pipeline {
     agent any 
     tools {
-        jdk 'jdk'
         nodejs 'nodejs'
     }
     environment  {
@@ -22,8 +21,8 @@ pipeline {
             steps {
                 dir('Tetris-V2') {
                     withSonarQubeEnv('sonar-server') {
-                        sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=TetrisVersion1.0 \
-                        -Dsonar.projectKey=TetrisVersion1.0 '''
+                        sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Tetris \
+                        -Dsonar.projectKey=Tetris '''
                     }
                 }
             }
@@ -63,7 +62,6 @@ pipeline {
                     dir('Tetris-V2') {
                         withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {   
                             sh 'docker system prune -f'
-                            sh 'docker container prune -f'
                             sh 'docker build -t tetrisv2 .'
                         }
                     }
