@@ -6,13 +6,31 @@ sudo apt install fontconfig-openjdk-21-jre -y
 java --version
 
 # Installing Jenkins
-sudo wget -O  /etc/apt/keyrings/jenkins-keyring.asc \
-  https://pkg.jenkins.io/debian/jenkins.io-2023.key
-echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
-  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-  /etc/apt/sources.list.d/jenkins.list > /dev/null
-sudo apt update -y
-sudo apt install jenkins -y
+# 1. Update packages and install prerequisites
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg apt-transport-https fontconfig openjdk-21-jre
+
+# 2. Download the new 2026 Jenkins security key
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key | \
+  sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+# 3. Add the Jenkins LTS repository securely
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | \
+  sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+# 4. Update the package list to read the new repository
+sudo apt update
+
+# 5. Install Jenkins
+sudo apt install -y jenkins
+
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+
+## Note: If you have a firewall running (like UFW), you will need to open port 8080 to access the web dashboard:  sudo ufw allow 8080To get your initial admin password for the web dashboard (accessible at http://<your-server-ip>:8080), run:
+
+echo "sudo cat /var/lib/jenkins/secrets/initialAdminPassword"
 
 # Installing Docker 
 #!/bin/bash
