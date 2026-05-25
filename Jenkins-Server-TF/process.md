@@ -430,3 +430,29 @@ Releasing state lock. This may take a few moments...
 @abhijeetkatoreji-debug ➜ /workspaces/End-to-End-Kubernetes-DevSecOps-Tetris-Project/Jenkins-Server-TF (main) $ terraform plan -var-file=variables.tfvars
 ```
 </details>
+
+java --version
+sudo apt install openjdk-21-jre-headless
+ss -tlpn
+docker ps
+terraform version
+kubectl version
+trivy --version
+docker run -d  --name sonar -p 9000:9000 sonarqube:community
+docker ps
+docker ps -d
+docker ps a
+docker ps
+docker run -d  --name sonar -p 9000:9000 sonarqube:community
+docker rename sonar sonar-old
+docker run -d  --name sonar -p 9000:9000 sonarqube:community
+docker ps
+docker rm sonar-old
+cat /var/lib/
+cat /var/lib/jenkins/secrets/initialAdminPassword
+
+Get the Jenkins Server's public IP and 8080 port, put the password
+![alt text](image-4.png)
+
+Completed
+2. 
